@@ -15,29 +15,34 @@ void solve() {
     cin >> k;
     k--;
 
-    int val = A[k]; 
+    int targetVal = A[k]; 
 
     int l = 0, r = n - 1;
 
-    while (l < r) {
+    //leftops
+    int leftOps = 0;
 
-        while (l < k and A[l] == val) {
-            l++;
+    for (int i = 0; i <= k; i++) {
+        int udpatedVal = (A[i] + leftOps) % 2;
+
+        if (udpatedVal != targetVal) {
+            leftOps++;
         }
-
-        while (r > k and A[r] == val) {
-            r--;
-        }
-
-        if (l == r and A[l] == val ) continue;
-
-        for (int i = l; i <= r; i++) {
-                A[i] = 1 - A[i];
-            }
-            count++;
     }
 
-    cout << count << endl;
+    //rightOps
+    int rightOps = 0;
+    for (int i = n - 1; i >= k; i--) {
+        int updatedVal = (A[i] + rightOps) % 2;
+
+        if (updatedVal != targetVal) {
+            rightOps++;
+        }
+    }
+
+    int ans = max(leftOps, rightOps);
+
+    cout << ans << endl;
 }
 
 signed main() {
