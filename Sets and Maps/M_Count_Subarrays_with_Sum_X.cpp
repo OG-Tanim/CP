@@ -18,7 +18,7 @@ void solve() {
         //for Sub-arrays from the index = 0 - (L = 0): P[R] = target - when we find the target itself in the prefix Sum Array 
         if (preSum == target) {
             count++;
-        }
+        }œ
         /*
         for Sub-arrays that don't start from index = 0 -  (L != 0): P[R] - p[L - 1] = target
         P[R] - target = P[L - 1] - index P[L] to P[R] is the subarray
