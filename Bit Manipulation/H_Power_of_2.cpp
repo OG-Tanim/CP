@@ -5,16 +5,17 @@ using namespace std;
 void solve() {
     //All Powers of 2 have ONLY ONE set binary digit
 
-    ll n, mask = 1, count = 0;
-    cin >> n;
-
-    while(n > 0) {
+    ll n; cin >> n;
+    // ll mask = 1, count = 0;
+    // while(n > 0) {
         //check if the last bit is set then right shift
-        if ((n & mask) != 0) count++;
-        n >>= 1;
-    }
+    //     if ((n & mask) != 0) count++;
+    //     n >>= 1;
+    // }
 
-    cout << ((count == 1) ? "YES" : "NO") << endl;
+    // cout << ((count == 1) ? "YES" : "NO") << endl;
+
+    cout << ((n & (n - 1)) == 0 ? "YES" : "NO") << endl;
 
 }
 
