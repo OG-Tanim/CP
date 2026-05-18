@@ -23,4 +23,4 @@ signed main () {
     int ans = fn(n);
 
     cout << ans << endl;
-}`
+}
