@@ -82,9 +82,7 @@ Node* findMiddle(Node* head) {
         //move slow 1 step and fast 2 steps
         slow = slow -> next;
         fast = fast -> next -> next;  
-
     }
-
     return slow;
 };
 
