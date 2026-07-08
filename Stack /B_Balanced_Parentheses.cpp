@@ -1,55 +1,97 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define int long long
 
-#define int             long long
-#define all(x)          x.begin(), x.end()
-#define double          long double
-#define endl            '\n'
-#define ff              first
-#define ss              second
-#define v               vector
-#define pb              push_back
-#define bit(num, i)     (num & (1ll << i))
+bool isValid(char open, char close) {
 
-using pii = pair<int, int>;
-const bool multipleTestCases = false;
+    return ((open == '(' && close == ')') ||
+            (open == '{' && close == '}') || 
+            (open == '[' && close == ']')   
+    );
+}
 
-void solve()
-{
-    string s; 
-    int cnt = 0;
-    bool ans =  true;  
+//For mutiple types of brackets
+void solve() {
 
-    for (char c: s) {
+    string S; cin >> S; 
+    stack<char> st;
 
-        if (c == '(' || c == '{' || '[') {
-            cnt++;
+    bool ans = true; 
+    for (char ch: S) {
+
+        //if opening bracket, push to stack 
+        if (ch == '(' || ch == '{' || ch == '[') {
+            st.push(ch);
         }
+
+        //if closing bracket, it has to pair with the opening bracket on top of stack
         else {
-            //if there are NO unpaired opening brackets left
-            if (cnt == 0) {
-                ans = false; 
-                break;
+
+            //there is no opening bracket left to pair with
+            if (st.empty()) {
+                ans = false;
+                break; 
             }
-            
-            cnt--;
+
+            else {
+                //is valid : a -> opening and b -> closing
+                if (isValid(st.top(), ch)) {
+                    st.pop();
+                }
+                else {
+                    ans = false; 
+                    break; 
+                }
+            }
         }
     }
 
-    //if there are unpaired opening brackets left
-    if (cnt != 0) ans = false;
+    //if stack still not empty, there is one or more unmatched opening brackets
+    if (!st.empty()) ans = false;
 
-    cout << (ans ?) << endl;
+    cout << (ans ? "Yes" : "No") << '\n';
 
 }  
 
-signed main()
-{
-    cin.tie(nullptr)->sync_with_stdio(false);
-    int t; cin >> t;
-    for (int i = 1; i <= t; i++)
-    {
-        // cout << "Case #" << i << ": ";
+//solve for a single type of brackets;
+// void solve () {
+//     string S; cin >> S; 
+//     int count = 0;
+
+//     bool ans = true; 
+//     for (char ch: S) {
+
+//         if (ch == '(') {
+//             count++;
+//         }
+
+//         else {
+//             //no opening bracket left to pair closing bracket with
+//             if (count == 0) {
+//                 ans = false;
+//                 break;
+//             }
+//             else {
+//                 count--;
+//             }
+//         }
+//     }
+
+//     //if there are still upaired opening brackets left
+//     if (count != 0) ans = false;
+
+//     cout <<  (ans ? "Yes" : "No") << endl;
+// }
+
+signed main() {
+
+    cin.tie(NULL);
+    ios::sync_with_stdio(false);
+
+    // int t = 1;
+    int t; 
+    cin >> t;
+    while(t--) {
         solve();
-    }
+    }  
 }
