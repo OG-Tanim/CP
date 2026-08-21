@@ -8,9 +8,9 @@ int main() {
     string s2 = "";
 
     for (int i = 0; i < s.size(); i++) {
-        if (s[i] >= 'a' && s[i] <= 'z') s2 += (char)(s[i] - 32);
-        else s2 += (char)(s[i] + 32);
+        if (s[i] >= 'a' && s[i] <= 'z') s2 += (s[i] - 32);
+        else s2 += (s[i] + 32);
     }
 
-    cout << s2;
+    cout << s2 << endl; 
 }

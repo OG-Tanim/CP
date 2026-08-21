@@ -44,7 +44,9 @@ void solve() {
 
         cout << ", shifts = " << shifts << endl;
     }
+
 }
+
 
 int main() {
     int t = 1;
