@@ -64,42 +64,31 @@ string serialize(TreeNode* root) {
     mistake. Recover the tree by swapping them back, without changing its
     structure. The function returns nothing -- fix the tree in place.
 */
+void inOrderHelper(TreeNode *currNode, TreeNode* &prev, TreeNode* &first, TreeNode* &second) {
 
-struct Data {
-    int first = 0; 
-    int second = 0; 
-};
+    if (!currNode) return; 
 
-Data inOrder(TreeNode* root, int &prev) {
+    inOrderHelper(currNode -> left, prev, first, second); 
 
-    if (root == NULL) return Data(); 
+    if (prev and prev -> val > currNode -> val) {
+        if (!first) first = prev; 
+        second = currNode; 
+    } 
 
-    auto leftAns = inOrder(root -> left, prev);
+    prev = currNode;
 
-    if (prev != INT_MIN and prev > root -> val) {
-
-        if (leftAns.first == 0) leftAns.first = prev;
-        leftAns.second = root -> val; 
-    }
-    
-    prev = root -> val; 
-
-    auto rightAns = inOrder(root -> right, prev); 
-
-    Data ans;
-    if (leftAns.first != 0) ans.first = leftAns.first; 
-    else ans.first = rightAns.first; 
-
-    if (leftAns.second != 0) ans.second = leftAns.second; 
-    else ans.second = rightAns.second; 
-
-    return ans; 
+    inOrderHelper(currNode -> right, prev, first, second);
 }
 
 void recoverTree(TreeNode* root) {
-    int prev = INT_MIN; 
-    auto [rogue1, rogue2] = inOrder(root, prev);
-    swap(rogue1, rogue2); 
+    TreeNode *prev = nullptr;  
+    TreeNode *first = nullptr;  
+    TreeNode *second = nullptr;
+    
+    inOrderHelper(root, prev, first, second); 
+
+    swap(first -> val, second -> val); 
+
 }
 
 int main() {
