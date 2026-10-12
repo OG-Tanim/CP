@@ -88,7 +88,7 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 
     //both sides have elements means root is answer; 
     if (leftAns and rightAns) return root; 
-    //else root is not - the side which has it is 
+    //else root is not - the side which has it i
     return leftAns ? leftAns : rightAns; 
      
 }

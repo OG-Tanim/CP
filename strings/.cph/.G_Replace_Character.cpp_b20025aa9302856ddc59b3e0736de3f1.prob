@@ -1,0 +1,1 @@
+{"name":"Local: G_Replace_Character","url":"/Users/mini-mac/Dev/CP/Strings/G_Replace_Character.cpp","tests":[{"id":1790587929762,"input":"string1 s g","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/mini-mac/Dev/CP/Strings/G_Replace_Character.cpp","group":"local","local":true}

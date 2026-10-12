@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int countOf1(int arr[], c) {
+int countOf1(int arr[], int c) {
     int count = 0;
     for (int i = 0; i < c; i++) {
         if (arr[i] == 1) {
@@ -24,7 +24,7 @@ int main() {
         }
     }
 
-    int max = countOf1(arr[0]);
+    int max = countOf1(arr[0], n);
 
     cout << max;
 

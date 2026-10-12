@@ -8,7 +8,7 @@ void solve() {
     int count = 0;
 
     for (int i = 0; i < s.size(); i++) {
-        if ((char)s[i] == 32) count++;  
+        if (s[i] == 32) count++;  
     }
 
     cout << count + 1;
